@@ -1,0 +1,66 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+struct vps
+{
+    string fio;
+    string nUn;
+    string fac;
+    string spc;
+    int age;
+}
+
+vps Add(vps uf)
+{
+    cout << "FIO: "; cin >> uf.fio;
+    cout << "University: "; cin >> uf.nUn;
+    cout << "Faculty: "; cin >> uf.fac;
+    cout << "Specialty: "; cin >> uf.spc;
+    cout << "Age: "; cin >> uf.age;
+    return uf;
+}
+
+int main()
+{
+    int swt = 0, k = 0;
+    vps uf;
+    
+    do
+    {
+        cout << "1. Add";
+        cout << "2. Del";
+        cout << "3. Srch";
+        cout << "4. Wrt" << endl;
+        
+        ofstream ovf;
+        
+        switch(swt)
+        {
+            case 1:
+            {
+                ofv.open("A.dat", ios_base::app);
+                Add(uf);
+                ofv << uf;
+            }
+            case 2:
+            {
+                
+            }
+            case 3:
+            {
+                
+            }
+            case 4:
+            {
+                
+            }
+            case 5:
+            {
+                
+                
+            }
+        }
+    } while (swt != 1);
+}
