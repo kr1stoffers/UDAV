@@ -1,0 +1,86 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+struct vps
+{
+    string fio;
+    string nUn;
+    string fac;
+    string spc;
+    int age;
+};
+
+void Add(vps uf)
+{
+    cin.ignore();
+    cout << "FIO: "; getline(cin, uf.fio);
+    cout << "University: "; cin >> uf.nUn;
+    cout << "Faculty: "; cin >> uf.fac;
+    cout << "Specialty: "; cin >> uf.spc;
+    cout << "Age: "; cin >> uf.age;
+};
+
+// void Read(vps uf)
+// {
+//     ofv.read((char*)&uf, sizeof(vps));
+    
+// }
+
+int main()
+{
+    int swt = 1, k = 0;
+    vps uf;
+    
+    do
+    {
+        cout << "1. Add" << endl;
+        cout << "2. Del" << endl;
+        cout << "3. Srch" << endl;
+        cout << "4. Wrt" << endl;
+        cout << "5. End" << endl;
+        cin >> swt;
+        
+        
+        switch(swt)
+        {
+            case 1:
+            {
+                ofstream ovf("A.dat", ios_base::app | ios_base::binary);
+                Add(uf);
+                ovf.write((char*)&uf, sizeof(vps));
+                ovf.close();
+                break;
+            }
+            case 2:
+            {
+                
+                break;
+            }
+            case 3:
+            {
+                
+                break;
+            }
+            case 4:
+            {
+                ifstream ovf("A.dat", ios_base::in | ios_base::binary);
+                ovf.read((char*)&uf, sizeof(vps));
+                cout << uf.fio << " "; 
+                cout << uf.nUn << " "; 
+                cout << uf.fac << " "; 
+                cout << uf.spc << " ";
+                cout << uf.age << " ";
+                ovf.close();
+                break;
+            }
+            case 5:
+            {
+                swt = 0;
+                break;
+            }
+        }
+    } while (swt != 0);
+}
