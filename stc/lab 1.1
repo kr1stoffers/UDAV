@@ -15,32 +15,48 @@ struct vps
 
 void Add(vps uf)
 {
+    ofstream ovf("A.txt", ios_base::app);
+    
     cin.ignore();
-    cout << "FIO: "; getline(cin, uf.fio);
-    cout << "University: "; cin >> uf.nUn;
-    cout << "Faculty: "; cin >> uf.fac;
-    cout << "Specialty: "; cin >> uf.spc;
-    cout << "Age: "; cin >> uf.age;
+    cout << "FIO: "; getline(cin, uf.fio); 
+    cout << "University: "; cin >> uf.nUn; 
+    cout << "Faculty: "; cin >> uf.fac;    
+    cout << "Specialty: "; cin >> uf.spc;  
+    cout << "Age: "; cin >> uf.age;        
+    
+    ovf << uf.fio << " ";
+    ovf << uf.nUn << " ";
+    ovf << uf.fac << " ";
+    ovf << uf.spc << " ";
+    ovf << uf.age << endl;
+    
+    ovf.close();
 };
 
-// void Read(vps uf)
-// {
-//     ofv.read((char*)&uf, sizeof(vps));
-    
-// }
+void Wrt()
+{
+    string s;
+    ifstream ovf("A.txt", ios_base::in);
+    while (getline(ovf, s))
+    {
+        cout << s << endl;
+    }
+    ovf.close();
+}
 
 int main()
 {
-    int swt = 1, k = 0;
+    int swt = 1, k = 1;
     vps uf;
+    string nns, nps, s;
     
     do
     {
-        cout << "1. Add" << endl;
+        cout << "\n1. Add" << endl;
         cout << "2. Del" << endl;
         cout << "3. Srch" << endl;
         cout << "4. Wrt" << endl;
-        cout << "5. End" << endl;
+        cout << "0. End" << endl;
         cin >> swt;
         
         
@@ -48,10 +64,7 @@ int main()
         {
             case 1:
             {
-                ofstream ovf("A.dat", ios_base::app | ios_base::binary);
                 Add(uf);
-                ovf.write((char*)&uf, sizeof(vps));
-                ovf.close();
                 break;
             }
             case 2:
@@ -61,26 +74,26 @@ int main()
             }
             case 3:
             {
-                
+                cout << endl;
+                ifstream ovf("A.txt");
+                cin.ignore();
+                getline(cin, nps);
+                while (getline(ovf, nns))
+                {
+                    if (nns == nps)
+                    {
+                        cout << k << ") " << nns << endl;
+                    }
+                    k++;
+                }
                 break;
             }
             case 4:
             {
-                ifstream ovf("A.dat", ios_base::in | ios_base::binary);
-                ovf.read((char*)&uf, sizeof(vps));
-                cout << uf.fio << " "; 
-                cout << uf.nUn << " "; 
-                cout << uf.fac << " "; 
-                cout << uf.spc << " ";
-                cout << uf.age << " ";
-                ovf.close();
-                break;
-            }
-            case 5:
-            {
-                swt = 0;
+                Wrt();
                 break;
             }
         }
     } while (swt != 0);
 }
+
