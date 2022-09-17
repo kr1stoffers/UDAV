@@ -1,0 +1,74 @@
+#include <iostream>
+
+using namespace std;
+
+struct vps
+{
+    string fio;
+    string nUn;
+    string fac;
+    string spc;
+    int age;
+};
+
+int main()
+{
+    vps arr[20];
+    int swt, p = 0, f = 0;
+
+    do
+    {
+        int i = 19;
+        cout << "\n1. Add" << endl;
+        cout << "2. Del" << endl;
+        cout << "3. Srch" << endl;
+        cout << "4. Wrt" << endl;
+        cout << "0. End" << endl;
+        cin >> swt;
+        
+        1 2 3 3
+        switch(swt)
+        {
+            case 1:
+            {
+                for (f; f < 19; f++)
+                {
+                    arr[i + 1] = arr[i];
+                    i--;
+                    if ()
+                }
+                cin.ignore();
+                cout << "FIO: "; getline(cin, arr[0].fio); 
+                cout << "University: "; cin >> arr[0].nUn; 
+                cout << "Faculty: "; cin >> arr[0].fac;    
+                cout << "Specialty: "; cin >> arr[0].spc;  
+                cout << "Age: "; cin >> arr[0].age;        
+                
+                break;
+            }
+            
+            case 2:
+            {
+                while(p < 20)
+                {
+                cout << arr[p].fio << " ";
+                cout << arr[p].nUn << " ";
+                cout << arr[p].fac << " ";
+                cout << arr[p].spc << " ";
+                cout << arr[p].age << endl;
+                p++;
+                }
+                break;
+                
+            }
+            case 3:
+            {
+                break;
+            }
+            case 4:
+            {
+                break;
+            }
+        }
+    } while (swt != 0);
+}
