@@ -33,6 +33,53 @@ void Add(vps uf)
     ovf.close();
 };
 
+void Del()
+{
+    string usStr, fgStr;
+
+    ifstream file_fd("A.txt");
+    ofstream file_ed("temp.txt", ios_base::app);
+    
+    cin.ignore();
+    getline(cin, usStr);
+    
+    while(getline(file_fd, fgStr))
+    {
+        if (fgStr != usStr)
+        {
+            file_ed << fgStr << endl;
+        }
+    }
+    
+    file_fd.close();
+    file_ed.close();
+    
+    ofstream file_F("A.txt");
+    ifstream file_D("temp.txt");
+    
+    while(getline(file_D, fgStr))
+    {
+        file_F << fgStr << endl;
+    }
+    remove("temp.txt");
+}
+void Srch()
+{
+    int k = 1;
+    string nps, nns;
+    cout << endl;
+    ifstream ovf("A.txt");
+    cin.ignore();
+    getline(cin, nps);
+    while (getline(ovf, nns))
+    {
+        if (nns == nps)
+        {
+            cout << k << ") " << nns << endl;
+        }
+    k++;
+    }
+}
 void Wrt()
 {
     string s;
@@ -46,9 +93,8 @@ void Wrt()
 
 int main()
 {
-    int swt = 1, k = 1;
+    int swt = 1;
     vps uf;
-    string nns, nps, s;
     
     do
     {
@@ -69,23 +115,12 @@ int main()
             }
             case 2:
             {
-                
+                Del();
                 break;
             }
             case 3:
             {
-                cout << endl;
-                ifstream ovf("A.txt");
-                cin.ignore();
-                getline(cin, nps);
-                while (getline(ovf, nns))
-                {
-                    if (nns == nps)
-                    {
-                        cout << k << ") " << nns << endl;
-                    }
-                    k++;
-                }
+                Srch();
                 break;
             }
             case 4:
@@ -96,4 +131,3 @@ int main()
         }
     } while (swt != 0);
 }
-
