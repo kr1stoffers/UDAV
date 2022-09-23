@@ -14,11 +14,11 @@ struct vps
 int main()
 {
     vps arr[20];
-    int swt, p = 0, f = 0;
-
+    int swt, p = 0;
+  
     do
     {
-        int i = 19;
+        int i = 18;
         cout << "\n1. Add" << endl;
         cout << "2. Del" << endl;
         cout << "3. Srch" << endl;
@@ -26,16 +26,14 @@ int main()
         cout << "0. End" << endl;
         cin >> swt;
         
-        1 2 3 3
         switch(swt)
         {
             case 1:
             {
-                for (f; f < 19; f++)
+                for (int f = 0; f < 19; f++)
                 {
                     arr[i + 1] = arr[i];
                     i--;
-                    if ()
                 }
                 cin.ignore();
                 cout << "FIO: "; getline(cin, arr[0].fio); 
@@ -49,24 +47,20 @@ int main()
             
             case 2:
             {
-                while(p < 20)
+                for (int d = 1; d <= 19; d++)
                 {
-                cout << arr[p].fio << " ";
-                cout << arr[p].nUn << " ";
-                cout << arr[p].fac << " ";
-                cout << arr[p].spc << " ";
-                cout << arr[p].age << endl;
-                p++;
+                    arr[d - 1] = arr[d];
                 }
                 break;
                 
             }
             case 3:
             {
-                break;
-            }
-            case 4:
-            {
+                cout << arr[0].fio << " ";
+                cout << arr[0].nUn << " ";
+                cout << arr[0].fac << " ";
+                cout << arr[0].spc << " ";
+                cout << arr[0].age << endl;
                 break;
             }
         }
