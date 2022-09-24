@@ -47,11 +47,10 @@ int main()
             
             case 2:
             {
-                arr[len-1].fio = ""; 
-                arr[len-1].nUn = "";
-                arr[len-1].fac = "";
-                arr[len-1].spc = "";
-                arr[len-1].age = 0;
+                for (int d = 1; d <= 19; d++)
+                {
+                    arr[d - 1] = arr[d];
+                }
                 
                 len--;
                 break;
@@ -59,7 +58,7 @@ int main()
             }
             case 3:
             {
-                cout << len << endl;
+                cout << "Length: " << len << endl;
                 break;
             }
         }
