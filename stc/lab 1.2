@@ -21,7 +21,7 @@ int main()
         int i = 18;
         cout << "\n1. Add" << endl;
         cout << "2. Del" << endl;
-        cout << "3. Length" << endl;
+        cout << "3. Top" << endl;
         cout << "0. End" << endl;
         cin >> swt;
         
@@ -39,9 +39,7 @@ int main()
                 cout << "University: "; cin >> arr[0].nUn; 
                 cout << "Faculty: "; cin >> arr[0].fac;    
                 cout << "Specialty: "; cin >> arr[0].spc;  
-                cout << "Age: "; cin >> arr[0].age;  
-                
-                len++;
+                cout << "Age: "; cin >> arr[0].age;
                 break;
             }
             
@@ -51,14 +49,16 @@ int main()
                 {
                     arr[d - 1] = arr[d];
                 }
-                
-                len--;
                 break;
                 
             }
             case 3:
             {
-                cout << "Length: " << len << endl;
+                cout << arr[0].fio << " ";
+                cout << arr[0].nUn << " ";
+                cout << arr[0].fac << " ";
+                cout << arr[0].spc << " ";
+                cout << arr[0].age << endl;
                 break;
             }
         }
