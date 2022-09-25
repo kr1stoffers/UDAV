@@ -1,1 +1,58 @@
 
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+void FileF()
+{
+    int ran;
+    ofstream f("A.dat", ios_base::binary);
+    
+    for (int i = 0; i < 9; i++)
+    {
+        ran = rand() % 100 + 1;
+        f << ran << " ";
+    }
+    f.close();
+}
+
+int main()
+{
+    srand(time(NULL));
+    arr[10];
+    
+    1 2 3
+    4 5
+    1,4 2,5
+    3
+    1,3,4
+    2,5
+    1,2,3,4,5
+    
+    int s, t = 0;
+    
+    FileF();
+    
+    ifstream g("A.dat", ios_base::binary);
+    for (int i = 0; i < 9; i++)
+    {
+        g >> arr[i];
+    }
+    
+    int mid = 10 / 2;
+    if (mid % 2 == 1) mid++;
+    
+    a[mid];
+    b[10-mid];
+    for (int i = 0; i < 9; i++)
+    {
+        if (i <= mid) a[i] = arr[i]
+        else
+        {
+            b[t] = arr[i];
+            t++;
+        }
+    }
+    
+}
