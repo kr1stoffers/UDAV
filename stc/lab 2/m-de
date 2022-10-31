@@ -1,82 +1,86 @@
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 
-void arrFill(char* arr)
+void arrFill(string* arr)
 {
     srand(time(NULL));
-    char randomCh1[10], randomCh2[2];
+    string randomCh1, randomCh2, str;
     for (int i = 0; i < 100; i++)
     {
-        randomCh1[0] = char(97 + rand()%26);
+        randomCh1 = char(97 + rand()%26);
         randomCh2 = char(97 + rand()%26);
-        strcat(randomCh1, randomCh2);
-        arr[i] = randomCh1;
+        str = randomCh1 + randomCh2;
+        arr[i] = str;
     }
 }
 
-// void sortArr(int* arr)
-// {
-//     int temp;
-//     for (int i = 0; i < 99; i++) 
-//     {
-//         for (int j = 0; j < 99 - i; j++) 
-//         {
-//             if (arr[j] > arr[j + 1]) 
-//             {
-//                 temp = arr[j];
-//                 arr[j] = arr[j + 1];
-//                 arr[j + 1] = temp;
-//             }
-//         }
-//     }
-// }
+void sortArr(string* arr)
+{
+    string temp;
+    for (int i = 0; i < 99; i++) 
+    {
+        for (int j = 0; j < 99 - i; j++) 
+        {
+            if (arr[j] > arr[j + 1]) 
+            {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
 
-// void bSearch(int* arr, int sch, int first, int last)
-// {
-//     int step = 1;
-//     while (true)
-//     {
-//         int mid = ((last + first) / 2);
+void bSearch(string* arr, string sch, int first, int last)
+{
+    int step = 0;
+    last--;
+    
+    while (true)
+    {
+        step++;
+        int mid = ((last + first) / 2);
         
-//         if (arr[mid] == sch)
-//         {
-//             cout << mid + 1 << ") " << sch << endl;
-//             cout << step;
-//             return;
-//         }
-//         else
-//         {
-//             if (arr[mid] > sch) 
-//             {
-//                 last = mid - 1
-//                 step++;
-//             }
-//             if (arr[mid] < sch)
-//             {
-//                 first = mid + 1;
-//                 step++;
-//             }
-//         }
+        if (arr[mid] == sch)
+        {
+            cout << mid + 1 << ") " << sch << endl;
+            cout << "Step: " << step;
+            break;
+        }
+        else
+        {
+            if (arr[mid] > sch) 
+            {
+                last = mid - 1;
+            }
+            if (arr[mid] < sch)
+            {
+                first = mid + 1;
+            }
+        }
         
-//     }
-// }
+    }
+}
 
-// void lSearch(int* arr, int sch)
-// {
-//     for (int i = 0; i < 100; i++)
-//     {
-//         if (arr[i] == sch) cout << i + 1 << ") " << sch
-//     }
-// }
+void lSearch(string* arr, string sch)
+{
+    for (int i = 0; i < 100; i++)
+    {
+        if (arr[i] == sch) 
+        {
+            cout << i + 1 << ") " << sch << endl;
+            cout << "Step: " << i + 1;
+        }
+    }
+}
 
 int main()
 {
-    char arr[100];
+    string arr[100];
     int swt;
     arrFill(arr);
-    //sortArr(arr);
+    sortArr(arr);
     
     do
     {
@@ -98,19 +102,20 @@ int main()
             }
             case 2:
             {
-                // int sch, size = 100;
-                // cout << "Enter element: "; 
-                // cin >> sch;
-                // bSearch(arr, sch, 0, 100);
-                // break;
+                int  size = 100;
+                string sch;
+                cout << "Enter element: "; 
+                cin >> sch;
+                bSearch(arr, sch, 0, 100);
+                 break;
             }
             case 3:
             {
-                // int sch;
-                // cout << "Enter element: "; 
-                // cin >> sch;
-                // lSearch(arr, sch);
-                // break;
+                string sch;
+                cout << "Enter element: "; 
+                cin >> sch;
+                lSearch(arr, sch);
+                break;
             }
         }
         cout << endl;
