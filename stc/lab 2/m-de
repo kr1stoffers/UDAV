@@ -1,0 +1,119 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+void arrFill(char* arr)
+{
+    srand(time(NULL));
+    char randomCh1[10], randomCh2[2];
+    for (int i = 0; i < 100; i++)
+    {
+        randomCh1[0] = char(97 + rand()%26);
+        randomCh2 = char(97 + rand()%26);
+        strcat(randomCh1, randomCh2);
+        arr[i] = randomCh1;
+    }
+}
+
+// void sortArr(int* arr)
+// {
+//     int temp;
+//     for (int i = 0; i < 99; i++) 
+//     {
+//         for (int j = 0; j < 99 - i; j++) 
+//         {
+//             if (arr[j] > arr[j + 1]) 
+//             {
+//                 temp = arr[j];
+//                 arr[j] = arr[j + 1];
+//                 arr[j + 1] = temp;
+//             }
+//         }
+//     }
+// }
+
+// void bSearch(int* arr, int sch, int first, int last)
+// {
+//     int step = 1;
+//     while (true)
+//     {
+//         int mid = ((last + first) / 2);
+        
+//         if (arr[mid] == sch)
+//         {
+//             cout << mid + 1 << ") " << sch << endl;
+//             cout << step;
+//             return;
+//         }
+//         else
+//         {
+//             if (arr[mid] > sch) 
+//             {
+//                 last = mid - 1
+//                 step++;
+//             }
+//             if (arr[mid] < sch)
+//             {
+//                 first = mid + 1;
+//                 step++;
+//             }
+//         }
+        
+//     }
+// }
+
+// void lSearch(int* arr, int sch)
+// {
+//     for (int i = 0; i < 100; i++)
+//     {
+//         if (arr[i] == sch) cout << i + 1 << ") " << sch
+//     }
+// }
+
+int main()
+{
+    char arr[100];
+    int swt;
+    arrFill(arr);
+    //sortArr(arr);
+    
+    do
+    {
+        cout << "1) Array:" << endl;
+        cout << "2) Binary Search" << endl;
+        cout << "3) Linear Search" << endl;
+        cout << "0) Exit" << endl;
+        cin >> swt;
+        
+        switch (swt)
+        {
+            case 1:
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    cout << i+1 << ") " << arr[i] << endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                // int sch, size = 100;
+                // cout << "Enter element: "; 
+                // cin >> sch;
+                // bSearch(arr, sch, 0, 100);
+                // break;
+            }
+            case 3:
+            {
+                // int sch;
+                // cout << "Enter element: "; 
+                // cin >> sch;
+                // lSearch(arr, sch);
+                // break;
+            }
+        }
+        cout << endl;
+    } while (swt != 0);
+    
+}
