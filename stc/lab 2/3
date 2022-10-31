@@ -33,7 +33,7 @@ void bSearch(int* arr, int sch, int first, int last)
 {
     while (true)
     {
-        int mid = ((last + first) / 2);
+        int mid = ((last + first) / 2) - 1;
         
         if (arr[mid] == sch)
         {
