@@ -1,58 +1,77 @@
-
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
-void FileF()
-{
+void FileF() {
     int ran;
-    ofstream f("A.dat", ios_base::binary);
-    
-    for (int i = 0; i < 9; i++)
-    {
+    ofstream f("A.dat");
+
+    for (int i = 0; i < 10; i++) {
         ran = rand() % 100 + 1;
         f << ran << " ";
     }
     f.close();
 }
 
-int main()
-{
-    srand(time(NULL));
-    arr[10];
-    
-    1 2 3
-    4 5
-    1,4 2,5
-    3
-    1,3,4
-    2,5
-    1,2,3,4,5
-    
-    int s, t = 0;
-    
-    FileF();
-    
-    ifstream g("A.dat", ios_base::binary);
-    for (int i = 0; i < 9; i++)
-    {
-        g >> arr[i];
-    }
-    
-    int mid = 10 / 2;
-    if (mid % 2 == 1) mid++;
-    
-    a[mid];
-    b[10-mid];
-    for (int i = 0; i < 9; i++)
-    {
-        if (i <= mid) a[i] = arr[i]
-        else
-        {
-            b[t] = arr[i];
-            t++;
+void Merger(int* arr, int sizeArr) {
+    int h = 1, step;
+    int mid = sizeArr / 2;
+    if (sizeArr % 2 == 1) mid++;
+    int* tmp_Arr = new int[sizeArr];
+
+    while (h < sizeArr) {
+        step = h;
+        int i = 0, j = mid, k = 0;
+        while (step <= mid) {
+            while ((i < step) && (j < sizeArr) && (j < (mid + step))) {
+                if (arr[i] < arr[j]) {
+                    tmp_Arr[k] = arr[i];
+                    i++;
+                    k++;
+                } else {
+                    tmp_Arr[k] = arr[j];
+                    j++;
+                    k++;
+                }
+            }
+            while (i < step) {
+                tmp_Arr[k] = arr[i];
+                i++;
+                k++;
+            }
+            while ((j < (mid + step)) && (j < sizeArr)) {
+                tmp_Arr[k] = arr[j];
+                j++;
+                k++;
+            }
+            step = step + h;
         }
+        h = h * 2;
+        for (i = 0; i < sizeArr; i++) arr[i] = tmp_Arr[i];
     }
-    
+}
+
+void vyvod(int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << endl;
+    }
+}
+
+int main() {
+    srand(time(NULL));
+    int arr[10];
+    int rf;
+    int s, t = 0;
+
+    FileF();
+
+    ifstream readFile("A.dat");
+    for (int i = 0; i < 10; i++) {
+        readFile >> arr[i];
+    }
+    readFile.close();
+
+    Merger(arr, 10);
+    vyvod(arr, 10);
 }
