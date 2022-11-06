@@ -3,56 +3,47 @@
 
 using namespace std;
 
-void FileF() {
+void FileF(int size) {
     int ran;
     ofstream f("A.dat");
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < size; i++) {
         ran = rand() % 100 + 1;
         f << ran << " ";
     }
     f.close();
 }
 
-void Merger(int* arr, int sizeArr) {
-    int h = 1, step;
-    int mid = sizeArr / 2;
-    if (sizeArr % 2 == 1) mid++;
-    int* tmp_Arr = new int[sizeArr];
+void merge(int *a, int start, int split, int stop) {
+    int pos1 = start;
+    int pos2 = split + 1;
+    int pos3 = 0;
 
-    while (h < sizeArr) {
-        step = h;
-        int i = 0, j = mid, k = 0;
-        while (step <= mid) {
-            while ((i < step) && (j < sizeArr) && (j < (mid + step))) {
-                if (arr[i] < arr[j]) {
-                    tmp_Arr[k] = arr[i];
-                    i++;
-                    k++;
-                } else {
-                    tmp_Arr[k] = arr[j];
-                    j++;
-                    k++;
-                }
-            }
-            while (i < step) {
-                tmp_Arr[k] = arr[i];
-                i++;
-                k++;
-            }
-            while ((j < (mid + step)) && (j < sizeArr)) {
-                tmp_Arr[k] = arr[j];
-                j++;
-                k++;
-            }
-            step = step + h;
-        }
-        h = h * 2;
-        for (i = 0; i < sizeArr; i++) arr[i] = tmp_Arr[i];
+    int *temp = new int[stop - start + 1];
+    while (pos1 <= split && pos2 <= stop) {
+        if (a[pos1] < a[pos2])
+            temp[pos3++] = a[pos1++];
+        else
+            temp[pos3++] = a[pos2++];
+    }
+    while (pos2 <= stop) temp[pos3++] = a[pos2++];
+    while (pos1 <= split) temp[pos3++] = a[pos1++];
+    for (pos3 = 0; pos3 < stop - start + 1; pos3++)
+        a[start + pos3] = temp[pos3];
+}
+
+void mergeSort(int *a, int start, int stop) {
+    int split;
+    if (start < stop) {
+        split = (start + stop) / 2;
+
+        mergeSort(a, start, split);
+        mergeSort(a, split + 1, stop);
+        merge(a, start, split, stop);
     }
 }
 
-void vyvod(int* arr, int size) {
+void arrOutput(int *arr, int size) {
     for (int i = 0; i < size; i++) {
         cout << arr[i] << endl;
     }
@@ -60,18 +51,19 @@ void vyvod(int* arr, int size) {
 
 int main() {
     srand(time(NULL));
-    int arr[10];
-    int rf;
-    int s, t = 0;
+    int randSize = rand() % 100 + 1;
+    int *arr = new int[randSize];
+    int count;
 
-    FileF();
+    FileF(randSize);
 
     ifstream readFile("A.dat");
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < randSize; i++) {
         readFile >> arr[i];
+        count++;
     }
     readFile.close();
 
-    Merger(arr, 10);
-    vyvod(arr, 10);
+    mergeSort(arr, 0, randSize - 1);
+    arrOutput(arr, randSize);
 }
