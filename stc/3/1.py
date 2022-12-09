@@ -34,27 +34,26 @@ while True:
         myList.add(name, fac, cours, group)
         
     elif swt == '2':    #Remove node
-        rm = input("Enter a node: ")
+        rmNode = input("Enter a node name: ")
         chain = myList
-        while chain.next:
+        while rmNode != chain.next.name:
             chain = chain.next
-            key = chain.name + " " + chain.fac + " " + chain.cours + " " + chain.group
-            if key == rm:
-                pass
+        chain.next = chain.next.next
     
     elif swt == '3':    #List view
         chain = myList
+        if chain.next == None:
+            print("A hde? A net\n")
         while chain.next:
             chain = chain.next
             print(chain.name, chain.fac, chain.cours, chain.group)
             
     elif swt == '4':    #Does list contain
-        search = input("Enter a node: ")
+        search = input("Enter a node name: ")
         chain = myList
         while chain.next:
             chain = chain.next
-            key = chain.name + " " + chain.fac + " " + chain.cours + " " + chain.group
-            if key == search:
+            if chain.name == search:
                 print("Yea")
                 break
             if chain.next == None:
@@ -62,10 +61,3 @@ while True:
                 
     else:
         break
-
-
-
-
-
-
-
