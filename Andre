@@ -1,3 +1,6 @@
+https://docs.google.com/presentation/d/1Vv-5WlBKbsiqbc2NaNZOLQxdZ_tyGpWfxmvhd1JXVDc/edit?usp=sharing
+https://docs.google.com/presentation/d/1UNZeOWVmdyJWKXKrPCA4ZpiRuji3y4POAC7o7KupiTY/edit?usp=sharing
+
 class Stack:
     def __init__(self):
         self.stack = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # 10  <kostyl :) >
