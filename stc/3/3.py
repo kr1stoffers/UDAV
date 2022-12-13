@@ -7,16 +7,22 @@ class Node:
     def add(self, number):
         if self.number is None:
             self.number = number
-            return
+            return self
+        
         newNode = Node(number)
         newNode.next = self
         self.pref = newNode
-        self.number = newNode.number
+        return newNode
+        
         
     def remove(self):
-        rmNode = Node(self.next.number)
+        if self.next is None:
+            self.number = None
+            return self
+        
         self = self.next
         self.pref = None
+        return self
         
 myList = Node()
 
@@ -27,15 +33,15 @@ while True:
     print("4. Does list contain?")
     print("0. Exit")
     
-    swt = input()
+    swt = input("Your choose: ")
     
     if swt == '1':        #Add node 
         number = input("Number: ")
         
-        myList.add(number)
+        myList = myList.add(number)
         
     elif swt == '2':    #Remove node
-        myList.remove()
+        myList = myList.remove()
     
     elif swt == '3':    #List view
         chain = myList
@@ -50,14 +56,13 @@ while True:
     elif swt == '4':    #Does list contain
         search = input("Enter a node name: ")
         chain = myList
-        while chain.next:
+        while chain:
             if chain.number == search:
                 print("Yea")
                 break
             if chain.next == None:
                 print("Nea")
                 break
-            chain = chain.next
-                
+            chain = chain.next     
     else:
         break
