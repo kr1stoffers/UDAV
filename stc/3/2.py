@@ -9,22 +9,15 @@ class Node:
         if self.country is None:
             self.country = country 
             self.capital = capital
-            return
+            return self
         newNode = Node(country, capital)
         pointer = self
         while (pointer.next):
             pointer = pointer.next
         pointer.next = newNode
-        pointer.prev = pointer
+        newNode.prev = pointer
+        return newNode
         
-# class List:
-    def __init__(self):
-        pass
-    def add(self):
-        pass
-    def print_list(self):
-        pass
-
 myList = Node()
  
 while True:
@@ -41,7 +34,7 @@ while True:
         country = input("Country: ")
         capital = input("Capital: ")
         
-        myList.add(country, capital)
+        myList = myList.add(country, capital)
         
     elif swt == '2':    #Remove node
         rmNode = input("Enter a country: ") 
@@ -52,22 +45,23 @@ while True:
     
     elif swt == '3':    #List view l-to-r
         chain = myList
-        print(chain.country, chain.capital)
-        # if chain.next == None & chain.prev == None:
-        #     print("A hde? A net\n")
-        while chain.next:
-            chain = chain.next
-            print(chain.country, chain.capital)
+        if chain.country is None:
+            print("A hde? A net\n")
+        else:
+            while chain.next:
+                print(chain.country, chain.capital)
+                chain = chain.next
             
     elif swt == '4':    #List view r-to-l
         chain = myList
-        # if chain.next == None & chain.prev == None:
-        #     print("A hde? A net\n")
-        while chain.next:
-            chain = chain.next
-        while chain.prev:
-            chain = chain.prev
-            print(chain.country, chain.capital)
+        if chain.country is None:
+            print("A hde? A net\n")
+        else:
+            while chain:
+                chain = chain.next
+            while chain:
+                chain = chain.prev
+                print(chain.country, chain.capital)
     
     elif swt == '5':    #Does list contain
         search = input("Enter a country: ")
