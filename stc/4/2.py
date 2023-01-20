@@ -1,16 +1,26 @@
-perona = [[],] * 1000
+perona = [0,] * 1000
+check = [0. ] * 1000
 
 def hash_brown(name):
     return (ord(name[0]) + ord(name[1])) % 1000
 
 def add_to(name, sname):
     index = hash_brown(name)
-    perona[index] = [name, sname]
+    if perona[index] != 0:
+        check[index] += 1
+        name_of_file = str(check[index]) + '.txt'
+        with open(name_of_file, 'at') as file:
+            file.write(name + ' ' + sname + '\n')
+    else:
+        perona[index] = [name, sname]
 
-def to_file(name):
-    with open('a.txt', 'at') as file:
-        file.write(str(perona[hash_brown(name)]))
-        file.write('\n')
+def to_file():
+    with open('a.txt', 'wt') as file:
+        for i in range(1000):
+            if perona[i] != 0:
+               for element in perona[i]:
+                    file.write(element + ' ')
+               file.write('\n')
 
 while True:
     print("1. Add")
@@ -24,7 +34,7 @@ while True:
         sname = input("Sname: ")
         
         add_to(name, sname)
-        to_file(name)
+        to_file()
         
     elif swt == '2':    #Search
         sch = input("Name: ")
